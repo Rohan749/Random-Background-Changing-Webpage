@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGChanger</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        #body{
+            display: flex;
+            justify-content: center;
+            background-color: rgb(c1, c2, c3);
+            margin: 0px;
+            transition-property: background-color, background-image;
+            background-size:cover;
+            position: absolute;
+            top: 0; 
+            right: 0; 
+            bottom: 0; 
+            left: 0;
+        }
+        .btn{
+            height: 100px;
+            width: 180px;
+            border: none;
+            border-radius: 0px 0px 100px 100px;
+            box-shadow: 0px 24px 36px 0px;
+            cursor: pointer;
+            font-size: 23px;
+            margin-top: 0px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="body">
+        <button class="btn btn1" onclick="changeBGColor()">
+            Change BGColour
+        </button>
+        <button class="btn btn2" onclick="changeBGgradient()">
+            Change BGGradient
+        </button>
+        <button class="btn btn3" onclick="changeBGImage()">
+            Change BGImage
+        </button>
+    </div>
+    <script>
+        let btn = document.getElementsByClassName("btn1");
+        let body = document.getElementById("body");
+        function randomNumber(){
+            let x = Math.floor(256*Math.random());
+            return x;
+        }
+        
+            function changeBGColor()
+            {
+                let c1 = randomNumber();
+                let c2 = randomNumber();
+                let c3 = randomNumber();
+                document.getElementById("body").style.backgroundImage = `none`;
+                document.getElementById("body").style.backgroundColor = `rgb( ${c1}, ${c2}, ${c3} )`;
+                document.getElementById("body").style.transitionDuration = "0.5s";
+                console.log("Random color is called:-rbg(",c1,c2,c3,")");
+            }
+
+            function changeBGImage()
+            {
+                let y = Math.floor(80*Math.random());
+                console.log("Now BGimage will be changed.")
+                document.getElementById("body").style.backgroundImage = `url(vectorArt/${y}.jpg)`;        
+            }
+
+            function changeBGgradient()
+            {
+                let col1 = randomNumber();
+                let col2 = randomNumber();
+                let col3 = randomNumber();
+                let col4 = randomNumber();
+                let col5 = randomNumber();
+                let col6 = randomNumber();
+                document.getElementById("body").style.backgroundColor = `none`;
+                document.getElementById("body").style.backgroundImage = `linear-gradient(to bottom,rgb(${col1}, ${col2}, ${col3}), rgb(${col4}, ${col5}, ${col6}))`;
+                document.getElementById("body").style.transitionDuration = "0.5s";
+                console.log("GRANDIENT USED: rgb(",col1,col2,col3,")|rgb(",col4,col5,col6,")");
+            }
+    </script>
+</body>
+</html>
